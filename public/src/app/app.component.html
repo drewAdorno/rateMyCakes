@@ -1,0 +1,8 @@
+<h1>Rate my Cakes</h1>
+<p> {{ cake | json }} </p>
+<form (submit)="onSubmit()">
+  <p><input type="text" name="cakeName" [(ngModel)]="cake.cakeName"/></p>
+  <p><input type="text" name="bakerName" [(ngModel)]="cake.bakerName"/></p>
+  <p><input type="text" name="url" [(ngModel)]="cake.url"/></p>
+  <p><button type="submit">Submit Cake</button></p>
+</form>
