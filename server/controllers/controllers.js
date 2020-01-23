@@ -23,10 +23,28 @@ module.exports =
     },
     postCake: function(req, res)
     {
-        console.log(req.body);
         Cake.create(req.body)
             .then(data => res.json({status: "success", cake:data}))
             .catch(err => res.json({ status: "Error", message: err }));  
-    }
+    },
+    addRatingByID: function(req, res)
+    {
+        Cake.updateOne({_id: req.params.id},{$push: {reviews:req.body}})
+            .then(data => res.json({status: "success", cake:data}))
+            .catch(err => res.json({ status: "Error", message: err }));  
+    },
+    update: function(req, res)
+    {
+        Cake.updateOne({_id: req.params.id}, { $set: req.body })
+            .then(data => res.json({status: "success", cake:data}))
+            .catch(err => res.json({ status: "Error", message: err }));  
+    },
+    delete: function(req, res)
+    {
+        Cake.remove({_id: req.params.id})
+            .then(data => res.json({status: "success", cake:data}))
+            .catch(err => res.json({ status: "Error", message: err }));  
+    },
+
     
 };

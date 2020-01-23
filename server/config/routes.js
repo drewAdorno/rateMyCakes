@@ -16,4 +16,21 @@ module.exports=(app)=>
     {
         controller.postCake(req,res);
     });
+
+    app.put('/cake/rating/:id', (req, res) => 
+    {
+        controller.addRatingByID(req,res);
+    });
+
+    app.put('/cake/:id', (req, res) => 
+    {
+        controller.update(req,res);
+    });
+
+    app.delete('/cake/:id', (req, res) => 
+    {
+        controller.delete(req,res);
+    });
+
+    
 }
