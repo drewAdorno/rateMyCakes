@@ -3,8 +3,8 @@ const express = require("express"),
     bodyParser = require('body-parser');
     path = require('path');
 
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './public/dist/public')));
+app.use(bodyParser.json());
 
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);

@@ -1,7 +1,7 @@
 const collections = require('../models/models');
 
-const cake=collections.cake;
-const review=collections.review;
+const Cake=collections.cake;
+const Review=collections.review;
 
 module.exports = 
 {
@@ -11,23 +11,20 @@ module.exports =
     },
     allCakes: function(req, res)
     {
-        cake.find()
+        Cake.find()
             .then(data => res.json({status: "success", cakes:data}))
             .catch(err => res.json({ status: "Error", message: err }));  
     },
     cake: function(req, res)
     {
-        cake.findOne({_id: req.params.id})
+        Cake.findOne({_id: req.params.id})
             .then(data => res.json({status: "success", cake:data}))
             .catch(err => res.json({ status: "Error", message: err }));  
     },
     postCake: function(req, res)
     {
-        const cake=new cake();
-        cake.cakeName=req.body.cakeName;
-        cake.bakerName=req.body.bakerName;
-        cake.url=req.body.url;
-        cake.save()
+        console.log(req.body);
+        Cake.create(req.body)
             .then(data => res.json({status: "success", cake:data}))
             .catch(err => res.json({ status: "Error", message: err }));  
     }

@@ -1,8 +1,19 @@
-<h1>Rate my Cakes</h1>
-<p> {{ cake | json }} </p>
-<form (submit)="onSubmit()">
-  <p><input type="text" name="cakeName" [(ngModel)]="cake.cakeName"/></p>
-  <p><input type="text" name="bakerName" [(ngModel)]="cake.bakerName"/></p>
-  <p><input type="text" name="url" [(ngModel)]="cake.url"/></p>
-  <p><button type="submit">Submit Cake</button></p>
-</form>
+<div class="row">
+  <div class="col">
+  <h1>Add a Cake</h1>
+  <form #cakeForm='ngForm' (submit)="onSubmit()">
+    <div class="form-group"><input type="text" class='form-control' name='cakeName' placeholder='Cake Name' [(ngModel)]='cake.cakeName'></div>
+    <div class='form-group'><input type="text" class='form-control' name="bakerName" placeholder="Baker Name" [(ngModel)]='cake.bakerName'/></div>
+    <div class='form-group'><input type="text" class='form-control' name="url" placeholder="Picture Url" [(ngModel)]='cake.url'/></div>
+    <p><button class="btn btn-secondary" type="submit">Submit Cake</button></p>
+  </form>
+  </div>
+  <div class="col">
+    <h1 class="text-center mb-3">Rate the Cakes</h1>
+    <ul class="list-group border" *ngFor="let cake of cakes">
+      <li class="list-group-item border-0">Cake Name:  {{cake.cakeName}}</li>
+      <li class="list-group-item border-0">Baker Name: {{cake.bakerName}}</li>
+      <li class="list-group-item border-0"><img src='{{cake.url}}' class="rounded mx-auto d-block" alt='cake'></li>
+    </ul>
+  </div>
+</div>
